@@ -20,7 +20,12 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+/* mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+ */
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+mongoose.connect(MONGODB_URI);
 
 app.use(express.static("public"));
 
@@ -35,7 +40,7 @@ app.set("view engine", "handlebars");
 
 // Import and use routes.
 var scraperRoutes = require("./controllers/controller.js");
-var savedRoutes = require("./controllers/saved");
+var savedRoutes = require("./controllers/saved.js");
 app.use(scraperRoutes, savedRoutes);
 
 
