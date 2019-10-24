@@ -15,6 +15,7 @@ app.get("/saved-articles", function(req, res) {
         // console.log(hbsObject);
         // Send all found saved articles as an object to be used in the handlebars receieving section of the index.
         res.render("save", hbsObject);
+        // res.json(hbsObject);
     })
     .catch(function(error) {
         // If an error occurs, send the error to the client.
